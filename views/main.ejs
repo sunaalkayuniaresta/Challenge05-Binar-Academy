@@ -147,6 +147,7 @@
           Large
         </button>
       </div>
+ 
       <div class="pt-2 d-flex justify-content-between">
         <div class="product">
           <% cars.forEach((car) => { %>
@@ -181,7 +182,7 @@
               </button>
             </div>
           </div>
-          <div class="modal" id="myModal<%= car?.id %>">
+          <div class="modal" id="myModal<%= car?.id %>" >
             <div class="modal-dialog">
               <div class="modal-content" style="background-color: transparent; border:none">
           
@@ -189,7 +190,7 @@
                 <!-- Modal body -->
                 
                   <div class="d-flex justify-content-center modal-body" style="border-radius: 1rem;">
-                    <div class="card shadow p-3" style="display:flex; border:none; align-items: center; border-radius: 1rem;">
+                    <div class="card shadow p-3" style="display:flex; border:none; align-items: center; border-radius: 1rem;width: 500px; height: 500px;">
                       <h5 class="modal-title mb-3">Delete Confirmation</h5>
                       <img src="images/kucing_menangis.jpg" class="rounded-circle shadow" style="width:300px; height:auto"/>
                       <div class="card-body">
@@ -206,7 +207,8 @@
                       <button
                         type="button"
                         class="btn btn-danger"
-                        onclick="location.href='/cars/delete/<%= car?.id %>'"
+                        data-bs-toggle="modal"
+                        data-bs-target="#myModalhapusdone<%= car?.id %>"
                       >
                         Delete
                       </button>
@@ -219,19 +221,36 @@
               </div>
             </div>
           </div>
-          
-          <!-- The Modal -->
-          <div class="modal" id="myModal">
+          <div class="modal" id="myModalhapusdone<%= car?.id %>" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog">
-              
-                <!-- Modal Header -->
+              <div class="modal-content" style="background-color: transparent; border:none">
+          
+                <!-- Modal Header -->          
                 <!-- Modal body -->
                 
+                  <div class="d-flex justify-content-center modal-body" style="border-radius: 1rem;">
+                    <div class="card shadow p-3" style="display:flex; border:none; align-items: center; border-radius: 1rem; width: 500px; height: 500px;">
+                      <h2 class="modal-title my-4">Delete Car Success</h2>
+                      <img src="images/beluga.jpg" class="rounded-circle shadow my-1" style="width:250px; height:auto"/>
+                      <div class="d-block">
 
-
-              
+                      <button
+                        type="button"
+                        class="btn btn-lg btn-success my-4"
+                        onclick="location.href='/cars/delete/<%= car?.id %>'"
+                      >
+                        Confirm
+                      </button>
+                      </div>
+  
+                    </div>
+                  </div>
+                
+                          
+              </div>
             </div>
           </div>
+          
           <% }) %>
           <!-- batas suci -->
         </div>

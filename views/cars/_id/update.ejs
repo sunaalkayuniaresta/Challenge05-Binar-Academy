@@ -114,8 +114,9 @@
       <div class="w-100 bg-light px-5 py-3 rounded-3">
         <form method="POST" action="/cars/<%= cars?.id %>" class="w-50 px-5 my-auto m-5">
           <div class="mb-3">
-            <label for="namaMobil" class="form-label">Nama Baru</label>
+            <label for="namaMobil" class="form-label">Name</label>
             <input
+              required
               type="text"
               class="form-control"
               id="namaMobil"
@@ -125,7 +126,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="hargaSewa" class="form-label">Sewa Per Hari</label>
+            <label for="hargaSewa" class="form-label">Rent Price Per Day</label>
             <input
               type="number"
               class="form-control"
@@ -137,12 +138,24 @@
             />
           </div>
           <div class="mb-3">
-            <label for="ukuranMobil" class="form-label">Ukuran</label>
-            <select class="form-select" name="type" id="ukuranMobil">
+            <label for="ukuranMobil" class="form-label">Type</label>
+            <!-- <select class="form-select" name="type" id="ukuranMobil">
               <option value="small" <%= cars.type === 'small' && 'selected' %> >Small</option>
               <option value="medium" <%= cars.type === 'medium' && 'selected' %>>Medium</option>
               <option value="large" <%= cars.type === 'large' && 'selected' %>>Large</option>
-          </select>
+          </select> -->
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="ukuranMobil1" name="type" value="small" <%= cars.type === 'small' && 'checked' %>
+            <label class="form-check-label" for="radio1">Small</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="ukuranMobil2" name="type" value="medium" <%= cars.type === 'medium' && 'checked' %>
+            <label class="form-check-label" for="radio1">Medium</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="ukuranMobil3" name="type" value="large" <%= cars.type === 'large' && 'checked' %>
+            <label class="form-check-label" for="radio1">Large</label>
+          </div>
           </div>
 
           <!-- <div class="mb-3">
@@ -156,7 +169,39 @@
           </div> -->
           <div class="mb-3">
             <a type="button" class="btn btn-outline-danger" onclick="history.back()"> <i class="bi bi-backspace-fill p-1"></i> Cancel</a>
-            <button type="submit" class="btn btn-primary"> <i class="bi bi-upload p-1"></i> Update</button>
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#myModal">
+            <i class="bi bi-upload p-1"></i> Update</button>
+            <div class="modal" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false">
+              <div class="modal-dialog">
+                <div class="modal-content" style="background-color: transparent; border:none">
+            
+                  <!-- Modal Header -->          
+                  <!-- Modal body -->
+                  
+                    <div class="d-flex justify-content-center modal-body" style="border-radius: 1rem;">
+                      <div class="card shadow p-3" style="display:flex; border:none; align-items: center; border-radius: 1rem; width: 500px; height: 500px;">
+                        <h2 class="modal-title my-4">Car Information Updated</h2>
+                        <img src="../../images/kucing_update.jpg" class="rounded-circle shadow my-1" style="width:250px; height:auto"/>
+                        <div class="d-block">
+  
+                        <button
+                          type="submit"
+                          class="btn btn-lg btn-success my-4"
+                          value="Update Car"
+                        >
+                          Confirm
+                        </button>
+                        </div>
+    
+                      </div>
+                    </div>
+                  
+                            
+                </div>
+              </div>
+            </div>
           </div>
         </form>
 

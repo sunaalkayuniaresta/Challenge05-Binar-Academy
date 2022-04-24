@@ -89,7 +89,9 @@
             >
               <img class="nav_logo" src="../images/Rectangle 62.png" />
               <p class="nav_title" style="margin-top: 17px">CARS</p>
-              <a href="/cars" class="nav_title text-black bg-color-1">List Car</a>
+              <a href="/cars" class="nav_title text-black bg-color-1"
+                >List Car</a
+              >
             </td>
           </tr>
         </table>
@@ -112,48 +114,166 @@
         <h4 class="h4 fw-bold">Add New Car</h4>
       </div>
       <div class="w-100 bg-light px-5 py-3 rounded-3">
-        <form method="POST" enctype="multipart/form-data" action="/cars/create" class="w-50 px-5 my-auto m-5">
+        <form
+          method="POST"
+          enctype="multipart/form-data"
+          action="/cars/create"
+          class="was-validated w-50 px-5 my-auto m-5"
+        >
           <div class="mb-3">
-            <label for="namaMobil" class="form-label">Nama</label>
+            <label for="namaMobil" class="form-label">Name</label>
             <input
+              required
               type="text"
               class="form-control"
               name="name"
               id="namaMobil"
               placeholder="Input Nama Mobil"
             />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <div class="mb-3">
-            <label for="hargaSewa" class="form-label">Sewa Per Hari</label>
+            <label for="hargaSewa" class="form-label">Rent Price Per Day</label>
             <input
+              required
               type="number"
               class="form-control"
               id="hargaSewa"
               name="price"
               placeholder="Rp. 0,-"
             />
-          </div>
-          <div class="mb-3">
-            <label for="ukuranMobil" class="form-label">Ukuran</label>
-            <select class="form-select" name="type" id="ukuranMobil">
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
           </div>
 
           <div class="mb-3">
-            <label for="formFileSm" class="form-label">Pilih Foto</label>
+            <label for="ukuranMobil" class="form-label">Type</label>
+            <!-- <select class="form-select" aria-label="select example" name="type" id="ukuranMobil">
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select> -->
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="ukuranMobil1"
+                name="type"
+                value="small"
+                required
+              />
+              <label class="form-check-label" for="radio1">Small</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="ukuranMobil2"
+                name="type"
+                value="medium"
+                required
+              />
+              <label class="form-check-label" for="radio1">Medium</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="ukuranMobil3"
+                name="type"
+                value="large"
+                required
+              />
+              <label class="form-check-label" for="radio1">Large</label>
+              <div class="valid-feedback">Valid.</div>
+              <div class="invalid-feedback">
+                Please choose one of this field.
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="formFileSm" class="form-label">Choose Image</label>
             <input
+              required
               class="form-control form-control-sm"
               id="formFileSm"
               name="image"
               type="file"
             />
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">
+              Please upload file in this field.
+            </div>
           </div>
           <div class="mb-3">
-            <a type="button" class="btn btn-outline-danger" onclick="history.back()"><i class="bi bi-backspace-fill p-1"></i>Cancel</a>
-            <button type="submit" class="btn btn-primary" value="Create Car"><i class="bi bi-upload p-1"></i> Create</button>
+            <a
+              type="button"
+              class="btn btn-outline-danger"
+              onclick="history.back()"
+              ><i class="bi bi-backspace-fill p-1"></i>Cancel</a
+            >
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
+              id="save"
+              disabled
+            >
+              <i class="bi bi-upload p-1"></i> Create
+            </button>
+            <div
+              class="modal"
+              id="myModal"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div
+                  class="modal-content"
+                  style="background-color: transparent; border: none"
+                >
+                  <!-- Modal Header -->
+                  <!-- Modal body -->
+
+                  <div
+                    class="d-flex justify-content-center modal-body"
+                    style="border-radius: 1rem"
+                  >
+                    <div
+                      class="card shadow p-3"
+                      style="
+                        display: flex;
+                        border: none;
+                        align-items: center;
+                        border-radius: 1rem;
+                        width: 500px;
+                        height: 500px;
+                      "
+                    >
+                      <h2 class="modal-title my-4">Car Successfully Created</h2>
+                      <img
+                        src="../images/komceng.jpg"
+                        class="rounded-circle shadow my-1"
+                        style="width: 250px; height: auto"
+                      />
+                      <div class="d-block">
+                        <button
+                          type="submit"
+                          class="btn btn-lg btn-success my-4"
+                          value="Create Car"
+                        >
+                          Confirm
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -163,5 +283,23 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const submitBtn = document.getElementById("save");
+
+      const uName = document.getElementById("namaMobil");
+      const uHarga = document.getElementById("hargaSewa");
+      const uImage = document.getElementById("formFileSm");
+
+      // run this function whenever the values of any of the above 4 inputs change.
+      // this is to check if the input for all 4 is valid.  if so, enable submitBtn.
+      // otherwise, disable it.
+      const checkEnableButton = () => {
+        submitBtn.disabled = !(uName.value && uHarga.value && uImage.value);
+      };
+
+      uName.addEventListener("change", checkEnableButton);
+      uHarga.addEventListener("change", checkEnableButton);
+      uImage.addEventListener("change", checkEnableButton);
+    </script>
   </body>
 </html>
